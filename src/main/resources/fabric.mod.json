@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "karnslib",
+  "version": "${version}",
+  "name": "KarnsLib",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Admin/KarnsLib"
+  },
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.karn.karnslib.KarnsLib"
+    ]
+  },
+  "mixins": [
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
