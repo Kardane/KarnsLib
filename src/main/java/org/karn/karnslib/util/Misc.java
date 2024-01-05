@@ -5,6 +5,11 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
 public class Misc {
+    public Vec3 getUnitVector(Vec3 vec1, Vec3 vec2){
+        Vec3 a = new Vec3(vec2.x-vec1.x,vec2.y-vec1.y,vec2.z-vec1.z);
+        double m = Mth.sqrt((float) (a.x*a.x + a.y*a.y + a.z*a.z));
+        return new Vec3(-a.x/m,-a.y/m,-a.z/m);
+    }
     public Vec3 getLocalPos(Vec3 pos, Vec2 rot, double forward, double up, double right){
         return getLocalPos(pos,rot,new Vec3(forward,up,right));
     }
