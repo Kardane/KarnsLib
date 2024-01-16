@@ -3,6 +3,7 @@ package org.karn.karnslib;
 import org.karn.karnslib.command.HitboxCmd;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import org.karn.karnslib.command.MotionCmd;
 import org.karn.karnslib.command.ParticleCmd;
 
 public class KarnsLib implements ModInitializer {
@@ -11,6 +12,7 @@ public class KarnsLib implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, commandRegistryAccess, ignored1) -> {
             HitboxCmd.register(dispatcher);
             ParticleCmd.register(dispatcher,commandRegistryAccess);
+            MotionCmd.register(dispatcher);
         });
         System.out.println("Mod Online!");
     }

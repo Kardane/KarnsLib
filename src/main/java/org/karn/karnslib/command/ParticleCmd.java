@@ -41,6 +41,13 @@ public class ParticleCmd {
                                                             Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
                                                             return 1;
                                                         })
+                                                        .then(Commands.argument("centermovement",DoubleArgumentType.doubleArg())
+                                                                .executes(ctx->{
+                                                                    List<Map<String, Double>> dots = Arc.CircleDots(Vec3Argument.getVec3(ctx,"center"),DoubleArgumentType.getDouble(ctx,"radius"),IntegerArgumentType.getInteger(ctx,"num"),DoubleArgumentType.getDouble(ctx,"centermovement"));
+                                                                    Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
+                                                                    return 1;
+                                                                })
+                                                        )
                                                         .then(Commands.argument("force", BoolArgumentType.bool())
                                                                 .executes(ctx ->{
                                                                     List<Map<String, Double>> dots = Arc.CircleDots(Vec3Argument.getVec3(ctx,"center"),DoubleArgumentType.getDouble(ctx,"radius"),IntegerArgumentType.getInteger(ctx,"num"));
@@ -75,6 +82,13 @@ public class ParticleCmd {
                                                                 Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
                                                                 return 1;
                                                             })
+                                                                .then(Commands.argument("centermovement",DoubleArgumentType.doubleArg())
+                                                                        .executes(ctx->{
+                                                                            List<Map<String, Double>> dots = Arc.ArcDots(Vec3Argument.getVec3(ctx,"center"),DoubleArgumentType.getDouble(ctx,"radius"),IntegerArgumentType.getInteger(ctx,"num"),DoubleArgumentType.getDouble(ctx,"angle1"),DoubleArgumentType.getDouble(ctx,"angle2"),DoubleArgumentType.getDouble(ctx,"centermovement"));
+                                                                            Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
+                                                                            return 1;
+                                                                        })
+                                                                )
                                                         .then(Commands.argument("force", BoolArgumentType.bool())
                                                                 .executes(ctx ->{
                                                                     List<Map<String, Double>> dots = Arc.ArcDots(Vec3Argument.getVec3(ctx,"center"),DoubleArgumentType.getDouble(ctx,"radius"),IntegerArgumentType.getInteger(ctx,"num"),DoubleArgumentType.getDouble(ctx,"angle1"),DoubleArgumentType.getDouble(ctx,"angle2"));
@@ -110,6 +124,13 @@ public class ParticleCmd {
                                                                             Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
                                                                             return 1;
                                                                         })
+                                                                        .then(Commands.argument("centermovement",DoubleArgumentType.doubleArg())
+                                                                                .executes(ctx->{
+                                                                                    List<Map<String, Double>> dots = Spiral.SpiralDots(Vec3Argument.getVec3(ctx, "center"), DoubleArgumentType.getDouble(ctx, "radius"), DoubleArgumentType.getDouble(ctx, "height"), IntegerArgumentType.getInteger(ctx, "rotation"),IntegerArgumentType.getInteger(ctx, "num"),DoubleArgumentType.getDouble(ctx,"centermovement"));
+                                                                                    Draw.DotArrayDraw(ctx.getSource().getLevel(),ParticleArgument.getParticle(ctx,"particle"),dots,false,dots.size());
+                                                                                    return 1;
+                                                                                })
+                                                                        )
                                                                         .then(Commands.argument("force", BoolArgumentType.bool())
                                                                                 .executes(ctx ->{
                                                                                     List<Map<String, Double>> dots = Spiral.SpiralDots(Vec3Argument.getVec3(ctx, "center"), DoubleArgumentType.getDouble(ctx, "radius"), DoubleArgumentType.getDouble(ctx, "height"), IntegerArgumentType.getInteger(ctx, "rotation"),IntegerArgumentType.getInteger(ctx, "num"));

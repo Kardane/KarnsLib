@@ -11,10 +11,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Draw {
+
+    public static void DotArrayDraw(ServerLevel world, ParticleOptions Particle, List<Map<String, Double>> array){
+        DotArrayDraw(world,Particle,array,false,array.size());
+    }
+
+    public static void DotArrayDraw(ServerLevel world, ParticleOptions Particle, List<Map<String, Double>> array, boolean force){
+        DotArrayDraw(world,Particle,array,force,array.size());
+    }
+
     public static void DotArrayDraw(ServerLevel world, ParticleOptions Particle, List<Map<String, Double>> array, boolean force, Integer step) {
         for (int i = 0; i < step; i++) {
             Map<String, Double> Dot = array.get(0);
-            DotDraw(world, Particle, Dot.get("x"), Dot.get("y"), Dot.get("z"),force);
+            DotDraw(world, Particle, Dot.get("x"), Dot.get("y"), Dot.get("z"), force ,new Vec3(Dot.get("dx"),Dot.get("dy"),Dot.get("dz")));
             array.remove(0);
             if (array.size() < 1) {
                 return;
@@ -32,26 +41,14 @@ public class Draw {
         }
     }
 
-    //vector method1
-    public static void DotDraw(ServerLevel world, ParticleOptions Particle, Vec3 pos) {
-        DotDraw(world, Particle, pos.x, pos.y, pos.z, false);
-    }
-
-    //vector method2
-    public static void DotDraw(ServerLevel world, ParticleOptions Particle, Vec3 pos, boolean force) {
-        DotDraw(world, Particle, pos.x, pos.y, pos.z, true);
-    }
-
-    //xyz method1
-    public static void DotDraw(ServerLevel world, ParticleOptions Particle, double x, double y, double z) {
-        DotDraw(world, Particle, x, y, z, false);
-    }
-
-    //xyz method2
     public static void DotDraw(ServerLevel world, ParticleOptions Particle, double x, double y, double z, boolean force) {
+        DotDraw(world,Particle,x,y,z,force,new Vec3(0,0,0));
+    }
+
+    public static void DotDraw(ServerLevel world, ParticleOptions Particle, double x, double y, double z, boolean force, Vec3 movement) {
         for(int j = 0; j < world.players().size(); ++j) {
             ServerPlayer player = world.players().get(j);
-            world.sendParticles(player, Particle, force, x, y, z, 0, 0, 0, 0, 1);
+            world.sendParticles(player, Particle, force, x, y, z, 0, movement.x, movement.y, movement.z,1);
         }
 
     }
